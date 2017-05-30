@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var Sequelize = require('sequelize');
+var postgres = require('pg-hstore');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -42,5 +44,29 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+const sequelize = new Sequelize('education_control', 'postgres', '', {
+    host: 'localhost',
+    dialect: 'postgres',
+
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+    },
+
+});
+
+sequelize
+    .authenticate()
+    .then(() => {
+    console.log('Connection has been established successfully.');
+})
+.catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
+
+
 
 module.exports = app;
