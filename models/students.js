@@ -6,14 +6,14 @@ module.exports = function (sequelize, DataTypes) {
         direction: {
             type: DataTypes.TEXT,
             references: {
-                model: Direction,
+                model: 'Directions',
                 key: 'id'
             }
         }
     }, {
         classMethods: {
             associate: function (models) {
-               Students.belongsTo(models.Assessment,{
+               Students.hasOne(models.Assessment,{
                    onDelete: "CASCADE",
                    foreignKey: {
                        allowNull: false

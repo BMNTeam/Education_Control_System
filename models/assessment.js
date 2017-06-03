@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
         student: {
             type: DataTypes.TEXT,
             references: {
-                model: Students,
+                model: 'Students',
                 key: 'id'
             }
         }

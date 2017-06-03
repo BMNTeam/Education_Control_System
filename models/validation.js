@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
         subject: {
             type: DataTypes.STRING,
             references: {
-                model: Subject,
+                model: 'Subject',
                 key: 'id'
             }
         },
@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
         teacher: {
             type: DataTypes.STRING,
             references: {
-                model: User,
+                model: 'User',
                 key: 'id'
             }
         }

@@ -7,8 +7,11 @@ var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
 var postgres = require('pg-hstore');
 
+
 var index = require('./routes/index');
 var users = require('./routes/users');
+var students = require('./routes/students/students');
+var directions = require('./routes/students/directions');
 
 var app = express();
 
@@ -26,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/students', students);
+app.use('/directions', directions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

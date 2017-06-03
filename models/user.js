@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
         subject: {
             type: DataTypes.STRING,
             references: {
-                model: Subject,
+                model: 'Subject',
                 key: 'id'
             }
         },
